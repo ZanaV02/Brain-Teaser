@@ -80,4 +80,23 @@ export const sr = {
   tab_games: "Igre",
   tab_history: "Istorija",
   tab_settings: "Postavke",
+// GAME DETAILS (Modal)
+  info_title: "O igri",
+  info_rules: "Pravila igre:",
+  info_scoring: "Bodovanje:",
+  info_video: "Video vodič:",
+  watch_video: "Pogledaj na YouTube-u",
+  close: "Zatvori",
+
+  // TICTACTOE DETALJI
+  rules_tictactoe: "Igrači naizmjenično postavljaju svoj znak (X ili O) na 3x3 tablu. Pobjednik je onaj ko prvi poveže tri svoja znaka horizontalno, vertikalno ili dijagonalno.",
+  scoring_tictactoe: "Lako: 100 bodova\nSrednje: 200 bodova\nTeško: 300 bodova",
+
+  // MEMORY DETALJI
+  rules_memory: "Pred vama je set okrenutih kartica. U svakom potezu okrećete po dvije. Ako su iste, ostaju otvorene. Ako nisu, zatvaraju se. Cilj je pronaći sve parove.",
+  scoring_memory: "Počinjete sa 500 bodova. Svaki potez smanjuje rezultat za 10 bodova. Što manje poteza, to veći rezultat!",
+
+  // MATH DETALJI
+  rules_mathquiz: "Prikazuju vam se matematički zadaci. Imate 4 ponuđena odgovora. Morate tačno odgovoriti na 10 pitanja u što kraćem roku.",
+  scoring_mathquiz: "Svaki tačan odgovor nosi 50 bodova. Od ukupnog zbira oduzima se vrijeme (u sekundama) koje vam je trebalo da završite.",
 };

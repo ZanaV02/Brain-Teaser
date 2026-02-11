@@ -3,12 +3,10 @@ import { Tabs } from 'expo-router';
 import { StyleSheet } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { useTheme } from '../../src/context/ThemeContext';
-// 1. IMPORTUJEMO PREVOD
 import { useLanguage } from '../../src/context/LanguageContext';
 
 export default function TabLayout() {
   const { theme, accentColor } = useTheme();
-  // 2. KORISTIMO T FUNKCIJU
   const { t } = useLanguage();
 
   return (
@@ -33,8 +31,8 @@ export default function TabLayout() {
       <Tabs.Screen
         name="index"
         options={{
-          title: t('tab_games'),       // <--- PREVEDENO (Naslov gore)
-          tabBarLabel: t('tab_games'), // <--- PREVEDENO (Labela dole)
+          title: t('tab_games'),   
+          tabBarLabel: t('tab_games'), 
           tabBarIcon: ({ color, focused }) => (
             <Ionicons 
               name={focused ? 'game-controller' : 'game-controller-outline'} 
@@ -49,8 +47,8 @@ export default function TabLayout() {
       <Tabs.Screen
         name="history"
         options={{
-          title: t('tab_history'),       // <--- PREVEDENO
-          tabBarLabel: t('tab_history'), // <--- PREVEDENO
+          title: t('tab_history'),  
+          tabBarLabel: t('tab_history'), 
           tabBarIcon: ({ color, focused }) => (
             <Ionicons 
               name={focused ? 'list-circle' : 'list-circle-outline'} 
@@ -65,8 +63,8 @@ export default function TabLayout() {
       <Tabs.Screen
         name="settings"
         options={{
-          title: t('tab_settings'),       // <--- PREVEDENO
-          tabBarLabel: t('tab_settings'), // <--- PREVEDENO
+          title: t('tab_settings'),     
+          tabBarLabel: t('tab_settings'), 
           tabBarIcon: ({ color, focused }) => (
             <Ionicons 
               name={focused ? 'settings' : 'settings-outline'} 
@@ -82,8 +80,8 @@ export default function TabLayout() {
 
 const styles = StyleSheet.create({
   tabBar: {
-    height: 65,
-    paddingBottom: 10,
+    height: 75,
+    paddingBottom: 1,
     paddingTop: 5,
     backgroundColor: '#ffffff',
     borderTopWidth: 1,

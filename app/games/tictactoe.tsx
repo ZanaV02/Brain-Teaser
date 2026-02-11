@@ -6,14 +6,13 @@ import { Ionicons } from '@expo/vector-icons';
 import { useTheme } from '../../src/context/ThemeContext';
 import { useUser } from '../../src/context/UserContext';
 import { saveGameScore } from '../../src/db/database';
-// 1. IMPORT
 import { useLanguage } from '../../src/context/LanguageContext';
+import GameInfoModal from '../../src/components/GameInfoModal';
 
 export default function TicTacToeScreen() {
   const router = useRouter();
   const { theme, accentColor } = useTheme();
   const { username } = useUser();
-  // 2. KUKA
   const { t } = useLanguage();
 
   const [difficulty, setDifficulty] = useState<'easy' | 'medium' | 'hard' | null>(null);
@@ -21,6 +20,7 @@ export default function TicTacToeScreen() {
   const [isHumanTurn, setIsHumanTurn] = useState(true); 
   const [gameActive, setGameActive] = useState(true);
   const [isComputerThinking, setIsComputerThinking] = useState(false);
+  const [modalVisible, setModalVisible] = useState(false);
 
   const checkWinner = (squares: (string | null)[]) => {
     const lines = [
@@ -146,7 +146,7 @@ export default function TicTacToeScreen() {
     }
   }, [isHumanTurn, gameActive, makeComputerMove]);
 
- const checkGameStatus = async (currentBoard: (string | null)[]) => {
+  const checkGameStatus = async (currentBoard: (string | null)[]) => {
     const winner = checkWinner(currentBoard);
     
     if (winner) {
@@ -164,7 +164,6 @@ export default function TicTacToeScreen() {
         winner === 'X' ? t('won') : t('lost'),
         "", 
         [
-          // DODATO DUGME "MENI"
           { text: t('menu'), onPress: () => setDifficulty(null) }, 
           { text: t('new_game'), onPress: resetGame }
         ]
@@ -175,7 +174,6 @@ export default function TicTacToeScreen() {
         t('draw'), 
         "", 
         [
-          // DODATO DUGME "MENI"
           { text: t('menu'), onPress: () => setDifficulty(null) },
           { text: t('new_game'), onPress: resetGame }
         ]
@@ -232,7 +230,10 @@ export default function TicTacToeScreen() {
              <Ionicons name="arrow-back" size={24} color={theme.text} />
            </TouchableOpacity>
            <Text style={[styles.title, { color: theme.text }]}>{t('new_game')}</Text>
-           <View style={{ width: 40 }} /> 
+           
+           <TouchableOpacity onPress={() => setModalVisible(true)} style={[styles.backButton, { backgroundColor: theme.card }]}>
+             <Ionicons name="information-circle-outline" size={24} color={accentColor} />
+           </TouchableOpacity>
         </View>
 
         <View style={styles.selectionContent}>
@@ -241,17 +242,26 @@ export default function TicTacToeScreen() {
           <Text style={[styles.selectSubtitle, { color: theme.textSecondary }]}>{t('game_tictactoe')}</Text>
           
           <TouchableOpacity style={[styles.difficultyButton, { backgroundColor: '#4CAF50' }]} onPress={() => setDifficulty('easy')}>
+            <Text style={styles.difficultyText}>{t('easy')}</Text>
             <Text style={styles.difficultySubText}>{t('desc_easy_ai')}</Text>
           </TouchableOpacity>
 
           <TouchableOpacity style={[styles.difficultyButton, { backgroundColor: '#FF9800' }]} onPress={() => setDifficulty('medium')}>
+            <Text style={styles.difficultyText}>{t('medium')}</Text>
             <Text style={styles.difficultySubText}>{t('desc_medium_ai')}</Text>
           </TouchableOpacity>
 
           <TouchableOpacity style={[styles.difficultyButton, { backgroundColor: '#F44336' }]} onPress={() => setDifficulty('hard')}>
+            <Text style={styles.difficultyText}>{t('hard')}</Text>
             <Text style={styles.difficultySubText}>{t('desc_hard_ai')}</Text>
           </TouchableOpacity>
         </View>
+
+        <GameInfoModal 
+          visible={modalVisible} 
+          onClose={() => setModalVisible(false)}
+          gameKey="tictactoe"
+        />
       </SafeAreaView>
     );
   }

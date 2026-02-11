@@ -8,8 +8,8 @@ import { Ionicons } from '@expo/vector-icons';
 import { useTheme } from '../../src/context/ThemeContext';
 import { useUser } from '../../src/context/UserContext';
 import { saveGameScore } from '../../src/db/database';
-// 1. IMPORT
 import { useLanguage } from '../../src/context/LanguageContext';
+import GameInfoModal from '../../src/components/GameInfoModal';
 
 const AVAILABLE_ICONS = [
   'planet', 'rocket', 'sunny', 'moon', 'heart', 'star', 
@@ -27,7 +27,6 @@ export default function MemoryGameScreen() {
   const router = useRouter();
   const { theme, accentColor } = useTheme();
   const { username } = useUser();
-  // 2. KUKA
   const { t } = useLanguage();
 
   const [difficulty, setDifficulty] = useState<'easy' | 'medium' | 'hard' | null>(null);
@@ -35,6 +34,7 @@ export default function MemoryGameScreen() {
   const [selectedCards, setSelectedCards] = useState<Card[]>([]);
   const [moves, setMoves] = useState(0);
   const [isProcessing, setIsProcessing] = useState(false);
+  const [modalVisible, setModalVisible] = useState(false);
 
   const shuffleCards = (array: any[]) => {
     return array.sort(() => Math.random() - 0.5);
@@ -116,7 +116,7 @@ export default function MemoryGameScreen() {
       }
 
       Alert.alert(
-        t('won'), // "Čestitamo!"
+        t('won'), 
         `${t('game_over')}\n${t('moves')}: ${moves + 1}\n${t('points')}: ${score}`,
         [
           { text: t('menu'), onPress: () => setDifficulty(null) },
@@ -138,7 +138,10 @@ export default function MemoryGameScreen() {
              <Ionicons name="arrow-back" size={24} color={theme.text} />
            </TouchableOpacity>
            <Text style={[styles.title, { color: theme.text }]}>{t('new_game')}</Text>
-           <View style={{ width: 40 }} /> 
+           
+           <TouchableOpacity onPress={() => setModalVisible(true)} style={[styles.backButton, { backgroundColor: theme.card }]}>
+             <Ionicons name="information-circle-outline" size={24} color={accentColor} />
+           </TouchableOpacity> 
         </View>
 
         <View style={styles.selectionContent}>
@@ -161,6 +164,12 @@ export default function MemoryGameScreen() {
             <Text style={styles.difficultySubText}>20 {t('cards_count')}</Text>
           </TouchableOpacity>
         </View>
+
+        <GameInfoModal 
+          visible={modalVisible} 
+          onClose={() => setModalVisible(false)}
+          gameKey="memory"
+        />
       </SafeAreaView>
     );
   }

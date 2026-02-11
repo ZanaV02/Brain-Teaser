@@ -164,9 +164,10 @@ export default function HistoryScreen() {
 
 const styles = StyleSheet.create({
   container: { flex: 1,
-    paddingTop: 15,
-    paddingBottom:50,
-    padding: 7,
+    paddingTop: 12,
+    paddingLeft: 7,
+    paddingRight: 7,
+    paddingBottom: 0,
    },
   searchContainer: {
     padding: 15,
@@ -218,6 +219,7 @@ const styles = StyleSheet.create({
     paddingTop: 20,
     paddingLeft: 7,
     paddingRight: 7,
+    paddingBottom: 0,
   },
   resultCard: {
     borderRadius: 16,

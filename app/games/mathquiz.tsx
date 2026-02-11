@@ -6,8 +6,8 @@ import { Ionicons } from '@expo/vector-icons';
 import { useTheme } from '../../src/context/ThemeContext';
 import { useUser } from '../../src/context/UserContext';
 import { saveGameScore } from '../../src/db/database'; 
-// 1. IMPORT
 import { useLanguage } from '../../src/context/LanguageContext';
+import GameInfoModal from '../../src/components/GameInfoModal';
 
 interface Question {
   text: string;
@@ -19,7 +19,6 @@ export default function MathQuizScreen() {
   const router = useRouter();
   const { theme, accentColor } = useTheme();
   const { username } = useUser();
-  // 2. KUKA
   const { t } = useLanguage();
 
   const [difficulty, setDifficulty] = useState<'easy' | 'medium' | 'hard' | null>(null);
@@ -29,6 +28,7 @@ export default function MathQuizScreen() {
   
   const [totalTime, setTotalTime] = useState(0);
   const [isActive, setIsActive] = useState(false);
+  const [modalVisible, setModalVisible] = useState(false);
   
   const TOTAL_QUESTIONS = 10;
 
@@ -122,11 +122,11 @@ export default function MathQuizScreen() {
     const finalScore = Math.max(0, accuracyPoints - timePenalty);
 
     if (username) {
-      await saveGameScore(username, 'Matematika', finalScore); // Ime igre u bazi ostaje isto
+      await saveGameScore(username, 'Matematika', finalScore); 
     }
 
     Alert.alert(
-      t('game_over'), // "Kviz završen!"
+      t('game_over'), 
       `${t('correct')}: ${correctAnswers}/${TOTAL_QUESTIONS}\n${t('time')}: ${totalTime}s\n\n${t('points').toUpperCase()}: ${finalScore}`,
       [
         { text: t('menu'), onPress: () => setDifficulty(null) },
@@ -143,7 +143,10 @@ export default function MathQuizScreen() {
              <Ionicons name="arrow-back" size={24} color={theme.text} />
            </TouchableOpacity>
            <Text style={[styles.title, { color: theme.text }]}>{t('new_game')}</Text>
-           <View style={{ width: 40 }} /> 
+           
+           <TouchableOpacity onPress={() => setModalVisible(true)} style={[styles.backButton, { backgroundColor: theme.card }]}>
+             <Ionicons name="information-circle-outline" size={24} color={accentColor} />
+           </TouchableOpacity>
         </View>
 
         <View style={styles.selectionContent}>
@@ -166,6 +169,12 @@ export default function MathQuizScreen() {
             <Text style={styles.difficultySubText}>{t('difficulty')}: 3</Text>
           </TouchableOpacity>
         </View>
+
+        <GameInfoModal 
+          visible={modalVisible} 
+          onClose={() => setModalVisible(false)}
+          gameKey="mathquiz"
+        />
       </SafeAreaView>
     );
   }

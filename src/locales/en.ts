@@ -81,4 +81,23 @@ export const en = {
   tab_games: "Games",
   tab_history: "History",
   tab_settings: "Settings",
+// GAME DETAILS (Modal)
+  info_title: "Game Details",
+  info_rules: "Rules:",
+  info_scoring: "Scoring:",
+  info_video: "Video Tutorial:",
+  watch_video: "Watch on YouTube",
+  close: "Close",
+
+  // TICTACTOE DETAILS
+  rules_tictactoe: "Players take turns placing their mark (X or O) on a 3x3 grid. The winner is the first to get three of their marks in a row (up, down, across, or diagonally).",
+  scoring_tictactoe: "Easy: 100 points\nMedium: 200 points\nHard: 300 points",
+
+  // MEMORY DETAILS
+  rules_memory: "You have a set of face-down cards. Turn over any two cards. If they match, they stay open. If not, they flip back. Find all pairs.",
+  scoring_memory: "Start with 500 points. Each move deducts 10 points. Fewer moves mean a higher score!",
+
+  // MATH DETAILS
+  rules_mathquiz: "You will see math problems with 4 possible answers. Solve 10 questions correctly as fast as you can.",
+  scoring_mathquiz: "Each correct answer is 50 points. The total time taken (in seconds) is deducted from your final score.",
 };

@@ -4,7 +4,6 @@ import { UserProvider, useUser } from '../src/context/UserContext';
 import { ThemeProvider } from '../src/context/ThemeContext';
 import { View, ActivityIndicator } from 'react-native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
-// 1. DODAJ OBAVEZNO OVAJ IMPORT:
 import { initializeDatabase } from '../src/db/database';
 import { LanguageProvider } from '../src/context/LanguageContext';
 
@@ -13,7 +12,6 @@ const MainLayout = () => {
   const router = useRouter();
   const segments = useSegments();
 
-  // 2. DODAJ OVAJ USE EFFECT (Ovo kreira tabele u bazi):
   useEffect(() => {
     initializeDatabase()
       .then(() => console.log("✅ Baza je spremna!"))
