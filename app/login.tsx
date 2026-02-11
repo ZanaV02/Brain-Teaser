@@ -1,0 +1,189 @@
+import React, { useState } from 'react';
+import { 
+  View, 
+  Text, 
+  StyleSheet, 
+  TextInput, 
+  TouchableOpacity, 
+  KeyboardAvoidingView, 
+  Platform, 
+  Alert,
+  ActivityIndicator
+} from 'react-native';
+import { useUser } from '../src/context/UserContext';
+import { Ionicons } from '@expo/vector-icons';
+// 1. IMPORTUJEMO PREVOD
+import { useLanguage } from '../src/context/LanguageContext';
+
+export default function LoginScreen() {
+  const [inputText, setInputText] = useState('');
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const { login } = useUser();
+  // 2. KORISTIMO T FUNKCIJU
+  const { t } = useLanguage();
+
+  const handleStart = async () => {
+    const name = inputText.trim();
+
+    if (name.length < 3) {
+      Alert.alert(
+        t('alert_short_name'), 
+        t('alert_short_name_msg')
+      );
+      return;
+    }
+
+    setIsSubmitting(true);
+    try {
+      await login(name);
+    } catch (error) {
+      console.error("Greška pri prijavi:", error);
+      Alert.alert(t('alert_error'), t('alert_login_error_msg'));
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  return (
+    <KeyboardAvoidingView 
+      behavior={Platform.OS === 'ios' ? 'padding' : 'height'} 
+      style={styles.container}
+    >
+      <View style={styles.card}>
+        <View style={styles.iconCircle}>
+          <Ionicons name="rocket-outline" size={45} color="#6200ee" />
+        </View>
+
+        <Text style={styles.title}>{t('login_welcome')}</Text>
+        <Text style={styles.subtitle}>
+          {t('login_subtitle')}
+        </Text>
+
+        <View style={styles.inputWrapper}>
+          <Ionicons name="person-outline" size={20} color="#6200ee" style={styles.inputIcon} />
+          <TextInput
+            style={styles.input}
+            placeholder={t('login_placeholder')}
+            value={inputText}
+            onChangeText={setInputText}
+            placeholderTextColor="#999"
+            autoCapitalize="none"
+            autoCorrect={false}
+          />
+        </View>
+
+        <TouchableOpacity 
+          style={[styles.button, isSubmitting && styles.buttonDisabled]} 
+          onPress={handleStart}
+          disabled={isSubmitting}
+          activeOpacity={0.8}
+        >
+          {isSubmitting ? (
+            <ActivityIndicator color="#fff" />
+          ) : (
+            <View style={styles.buttonContent}>
+              <Text style={styles.buttonText}>{t('login_btn')}</Text>
+              <Ionicons name="arrow-forward" size={20} color="#fff" />
+            </View>
+          )}
+        </TouchableOpacity>
+      </View>
+      
+      <Text style={styles.footerText}>ETF BL - PROJEKTNI ZADATAK 2024/2025</Text>
+    </KeyboardAvoidingView>
+  );
+}
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#6200ee',
+    justifyContent: 'center',
+    padding: 24,
+  },
+  card: {
+    backgroundColor: '#ffffff',
+    borderRadius: 30,
+    padding: 32,
+    alignItems: 'center',
+    elevation: 12,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 6 },
+    shadowOpacity: 0.3,
+    shadowRadius: 8,
+  },
+  iconCircle: {
+    width: 90,
+    height: 90,
+    borderRadius: 45,
+    backgroundColor: '#f0eaff',
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginBottom: 24,
+  },
+  title: {
+    fontSize: 28,
+    fontWeight: 'bold',
+    color: '#212121',
+    marginBottom: 8,
+  },
+  subtitle: {
+    fontSize: 15,
+    color: '#757575',
+    textAlign: 'center',
+    marginBottom: 32,
+    lineHeight: 22,
+  },
+  inputWrapper: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: '#f5f5f5',
+    borderRadius: 16,
+    paddingHorizontal: 16,
+    width: '100%',
+    height: 60,
+    marginBottom: 24,
+    borderWidth: 1,
+    borderColor: '#e0e0e0',
+  },
+  inputIcon: {
+    marginRight: 12,
+  },
+  input: {
+    flex: 1,
+    fontSize: 16,
+    color: '#212121',
+    fontWeight: '500',
+  },
+  button: {
+    backgroundColor: '#6200ee',
+    width: '100%',
+    height: 60,
+    borderRadius: 16,
+    justifyContent: 'center',
+    alignItems: 'center',
+    elevation: 4,
+  },
+  buttonContent: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  buttonDisabled: {
+    backgroundColor: '#b39ddb',
+  },
+  buttonText: {
+    color: '#ffffff',
+    fontSize: 18,
+    fontWeight: 'bold',
+    marginRight: 12,
+    letterSpacing: 1,
+  },
+  footerText: {
+    position: 'absolute',
+    bottom: 30,
+    alignSelf: 'center',
+    color: 'rgba(255,255,255,0.7)',
+    fontSize: 12,
+    letterSpacing: 1,
+  }
+});
