@@ -205,14 +205,16 @@ const styles = StyleSheet.create({
     flex: 1, 
   },
   scrollContent: {
-    padding: 3,
+    padding: 7,
     paddingTop: 15,
-    paddingBottom: 40
+    paddingBottom: 40,
   },
   profileHeader: {
     flexDirection: 'row',
     alignItems: 'center',
     marginBottom: 30,
+    marginLeft: 5,
+    marginRight: 5,
     padding: 20,
     borderRadius: 20,
     elevation: 4,

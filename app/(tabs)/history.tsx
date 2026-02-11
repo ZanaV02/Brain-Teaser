@@ -164,13 +164,16 @@ export default function HistoryScreen() {
 
 const styles = StyleSheet.create({
   container: { flex: 1,
-    paddingTop: 12,
+    paddingTop: 15,
     paddingBottom:50,
+    padding: 7,
    },
   searchContainer: {
     padding: 15,
-    borderRadius: 10,
+    borderRadius: 20,
     marginBottom: 2,
+    marginLeft: 5,
+    marginRight: 5,
   },
   searchWrapper: {
     flexDirection: 'row',
@@ -187,9 +190,11 @@ const styles = StyleSheet.create({
   filterWrapper: {
     paddingVertical: 5,
     paddingLeft: 3,
+    marginLeft: 5,
+    marginRight: 5,
     marginBottom:5,
     elevation: 2,
-    borderRadius:10,
+    borderRadius:20,
     shadowColor: '#000',
     shadowOpacity: 0.05,
     shadowOffset: { width: 0, height: 2 },
@@ -199,7 +204,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 5,
   },
   filterChip: {
-    paddingHorizontal: 17.5,
+    paddingHorizontal: 15.5,
     paddingVertical: 10,
     borderRadius: 20,
     marginRight: 8,
@@ -210,7 +215,9 @@ const styles = StyleSheet.create({
     fontSize: 13
   },
   listContent: {
-    paddingTop: 10,
+    paddingTop: 20,
+    paddingLeft: 7,
+    paddingRight: 7,
   },
   resultCard: {
     borderRadius: 16,

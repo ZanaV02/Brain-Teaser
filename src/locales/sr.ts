@@ -5,11 +5,11 @@ export const sr = {
   
   // Igre Naslovi i Opisi
   game_tictactoe: "Iks-Oks",
-  desc_tictactoe: "Klasična igra strategije za dva igrača.",
+  desc_tictactoe: "Klasična igra strategije za dva igrača",
   game_memory: "Memorija",
-  desc_memory: "Pronađi parove i treniraj svoje pamćenje.",
+  desc_memory: "Pronađi parove i treniraj svoje pamćenje",
   game_math: "Matematički Kviz",
-  desc_math: "Riješi zadatke što brže možeš.",
+  desc_math: "Riješi zadatke što brže možeš",
 
   // Zajedničko za igre
   new_game: "Nova igra",

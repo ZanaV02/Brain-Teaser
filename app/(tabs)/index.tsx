@@ -86,13 +86,14 @@ export default function GamesScreen() {
 
 const styles = StyleSheet.create({
   container: { flex: 1,
-    paddingTop:15
+    paddingTop:15,
    },
   headerSection: {
     padding: 25,
-    borderBottomLeftRadius: 20,
-    borderBottomRightRadius: 20,
-    marginBottom: 10,
+    borderRadius: 20,
+    marginBottom: 15,
+    marginLeft: 11.5,
+    marginRight: 11.5,
     elevation: 2,
     shadowColor: '#000',
     shadowOffset: { width: 0, height: 2 },
@@ -109,7 +110,7 @@ const styles = StyleSheet.create({
     marginTop: 5 
   },
   listContent: {
-    padding: 15,
+    padding: 8,
   },
   gameCard: {
     flexDirection: 'row',
@@ -117,6 +118,8 @@ const styles = StyleSheet.create({
     padding: 15,
     borderRadius: 16,
     marginBottom: 15,
+    marginLeft: 2,
+    marginRight: 2,
     elevation: 4,
     shadowColor: '#000',
     shadowOffset: { width: 0, height: 2 },

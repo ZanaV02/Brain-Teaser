@@ -5,11 +5,11 @@ export const en = {
   
   // Games Titles & Desc
   game_tictactoe: "Tic-Tac-Toe",
-  desc_tictactoe: "Classic strategy game.",
+  desc_tictactoe: "Classic strategy game",
   game_memory: "Memory",
-  desc_memory: "Find pairs and train your memory.",
+  desc_memory: "Find pairs and train your memory",
   game_math: "Math Quiz",
-  desc_math: "Solve problems as fast as you can.",
+  desc_math: "Solve problems as fast as you can",
 
   // Common Game
   new_game: "New Game",

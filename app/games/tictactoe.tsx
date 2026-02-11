@@ -146,7 +146,7 @@ export default function TicTacToeScreen() {
     }
   }, [isHumanTurn, gameActive, makeComputerMove]);
 
-  const checkGameStatus = async (currentBoard: (string | null)[]) => {
+ const checkGameStatus = async (currentBoard: (string | null)[]) => {
     const winner = checkWinner(currentBoard);
     
     if (winner) {
@@ -162,15 +162,23 @@ export default function TicTacToeScreen() {
 
       Alert.alert(
         winner === 'X' ? t('won') : t('lost'),
-        "", // <--- OVO JE FALILO (Prazna poruka)
-        [{ text: t('new_game'), onPress: resetGame }]
+        "", 
+        [
+          // DODATO DUGME "MENI"
+          { text: t('menu'), onPress: () => setDifficulty(null) }, 
+          { text: t('new_game'), onPress: resetGame }
+        ]
       );
     } else if (!currentBoard.includes(null)) {
       setGameActive(false);
       Alert.alert(
         t('draw'), 
-        "", // <--- I OVO JE FALILO
-        [{ text: t('new_game'), onPress: resetGame }]
+        "", 
+        [
+          // DODATO DUGME "MENI"
+          { text: t('menu'), onPress: () => setDifficulty(null) },
+          { text: t('new_game'), onPress: resetGame }
+        ]
       );
     }
   };
