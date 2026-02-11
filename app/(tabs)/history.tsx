@@ -7,7 +7,6 @@ import { Ionicons } from '@expo/vector-icons';
 import { useTheme } from '../../src/context/ThemeContext';
 import { getScoreHistory, ScoreEntry } from '../../src/db/database';
 import { useFocusEffect } from 'expo-router';
-// 1. IMPORTUJEMO PREVOD
 import { useLanguage } from '../../src/context/LanguageContext';
 
 export default function HistoryScreen() {
@@ -16,7 +15,6 @@ export default function HistoryScreen() {
   const [results, setResults] = useState<ScoreEntry[]>([]);
   
   const { theme, accentColor } = useTheme();
-  // 2. KUKA ZA JEZIK
   const { t } = useLanguage();
 
   useFocusEffect(
@@ -70,7 +68,6 @@ export default function HistoryScreen() {
           </View>
           <View>
             <Text style={[styles.usernameText, { color: theme.text }]}>{item.username}</Text>
-            {/* Ovdje koristimo funkciju za prevod imena igre */}
             <Text style={[styles.gameSubtitle, { color: theme.textSecondary }]}>
                 {getTranslatedGameName(item.gameName)}
             </Text>
@@ -78,7 +75,6 @@ export default function HistoryScreen() {
         </View>
         <View style={[styles.scoreBadge, { backgroundColor: theme.iconBg }]}>
           <Text style={[styles.scoreValue, { color: accentColor }]}>{item.score}</Text>
-          {/* PREVOD: BODOVA -> POINTS */}
           <Text style={[styles.scoreLabel, { color: accentColor }]}>{t('points').toUpperCase()}</Text>
         </View>
       </View>
@@ -93,7 +89,7 @@ export default function HistoryScreen() {
   const filters = ['Sve', 'Iks-Oks', 'Memorija', 'Matematika'];
 
   return (
-    <SafeAreaView style={[styles.container, { backgroundColor: theme.background }]} edges={['top']}>
+    <SafeAreaView style={[styles.container, { backgroundColor: theme.background }]} edges={['bottom', 'left', 'right']}>
       
       <View style={[styles.searchContainer, { backgroundColor: theme.card, borderBottomColor: theme.border }]}>
         <View style={[styles.searchWrapper, { backgroundColor: theme.iconBg }]}>
@@ -167,10 +163,14 @@ export default function HistoryScreen() {
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1 },
+  container: { flex: 1,
+    paddingTop: 12,
+    paddingBottom:50,
+   },
   searchContainer: {
     padding: 15,
-    borderBottomWidth: 1,
+    borderRadius: 10,
+    marginBottom: 2,
   },
   searchWrapper: {
     flexDirection: 'row',
@@ -185,27 +185,32 @@ const styles = StyleSheet.create({
     fontSize: 16,
   },
   filterWrapper: {
-    paddingVertical: 10,
+    paddingVertical: 5,
+    paddingLeft: 3,
+    marginBottom:5,
     elevation: 2,
+    borderRadius:10,
     shadowColor: '#000',
     shadowOpacity: 0.05,
     shadowOffset: { width: 0, height: 2 },
   },
   filterListContent: {
-    paddingHorizontal: 15,
+    padding:5,
+    paddingHorizontal: 5,
   },
   filterChip: {
-    paddingHorizontal: 16,
-    paddingVertical: 8,
+    paddingHorizontal: 17.5,
+    paddingVertical: 10,
     borderRadius: 20,
     marginRight: 8,
     borderWidth: 1,
   },
   filterChipText: {
-    fontWeight: '600',
+    fontWeight: '500',
+    fontSize: 13
   },
   listContent: {
-    padding: 15,
+    paddingTop: 10,
   },
   resultCard: {
     borderRadius: 16,

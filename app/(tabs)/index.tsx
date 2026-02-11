@@ -4,7 +4,6 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import { Ionicons } from '@expo/vector-icons';
 import { useTheme } from '../../src/context/ThemeContext';
 import { useRouter } from 'expo-router';
-// 1. IMPORTUJEMO PREVOD
 import { useLanguage } from '../../src/context/LanguageContext';
 
 interface Game {
@@ -18,10 +17,8 @@ interface Game {
 export default function GamesScreen() {
   const { theme } = useTheme();
   const router = useRouter();
-  // 2. KORISTIMO T FUNKCIJU
   const { t } = useLanguage();
 
-  // 3. DEFINIŠEMO IGRE UNUTAR KOMPONENTE (da bi t() radio)
   const GAMES: Game[] = [
     { 
       id: 'tictactoe', 
@@ -68,7 +65,7 @@ export default function GamesScreen() {
   );
 
   return (
-    <SafeAreaView style={[styles.container, { backgroundColor: theme.background }]} edges={['top']}>
+    <SafeAreaView style={[styles.container, { backgroundColor: theme.background }]} edges={['bottom', 'left', 'right']}>
       
       <View style={[styles.headerSection, { backgroundColor: theme.card }]}>
         {/* PREVOD NASLOVA */}
@@ -88,9 +85,11 @@ export default function GamesScreen() {
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1 },
+  container: { flex: 1,
+    paddingTop:15
+   },
   headerSection: {
-    padding: 20,
+    padding: 25,
     borderBottomLeftRadius: 20,
     borderBottomRightRadius: 20,
     marginBottom: 10,

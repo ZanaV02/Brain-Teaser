@@ -13,11 +13,9 @@ import { Ionicons } from '@expo/vector-icons';
 import { useUser } from '../../src/context/UserContext';
 import { useTheme, ACCENT_COLORS } from '../../src/context/ThemeContext';
 import { clearDatabase } from '../../src/db/database';
-// 1. IMPORTUJEMO KONTEKST ZA JEZIK
 import { useLanguage } from '../../src/context/LanguageContext';
 
 export default function SettingsScreen() {
-  // 2. KORISTIMO KUKU (izbacili smo lokalni state)
   const { language, toggleLanguage, t } = useLanguage();
   
   const { username, logout } = useUser();
@@ -75,7 +73,7 @@ export default function SettingsScreen() {
   );
 
   return (
-    <SafeAreaView style={[styles.container, { backgroundColor: theme.background }]} edges={['top']}>
+    <SafeAreaView style={[styles.container, { backgroundColor: theme.background }]} edges={['bottom', 'left', 'right']}>
       <ScrollView 
         style={{ flex: 1 }} 
         contentContainerStyle={styles.scrollContent}
@@ -207,7 +205,8 @@ const styles = StyleSheet.create({
     flex: 1, 
   },
   scrollContent: {
-    padding: 20,
+    padding: 3,
+    paddingTop: 15,
     paddingBottom: 40
   },
   profileHeader: {

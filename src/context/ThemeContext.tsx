@@ -3,9 +3,9 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 
 // Definišemo koje boje imamo na raspolaganju
 export const ACCENT_COLORS = {
-  purple: '#6200ee',
-  blue: '#2196F3',
-  orange: '#FF9800',
+  purple: '#a934cc',
+  blue: '#0a497d',
+  orange: '#ca9b55',
 };
 
 // Definišemo kako izgledaju boje za svijetlu i tamnu temu
