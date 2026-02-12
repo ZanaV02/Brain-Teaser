@@ -12,14 +12,12 @@ import {
 } from 'react-native';
 import { useUser } from '../src/context/UserContext';
 import { Ionicons } from '@expo/vector-icons';
-// 1. IMPORTUJEMO PREVOD
 import { useLanguage } from '../src/context/LanguageContext';
 
 export default function LoginScreen() {
   const [inputText, setInputText] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const { login } = useUser();
-  // 2. KORISTIMO T FUNKCIJU
   const { t } = useLanguage();
 
   const handleStart = async () => {

@@ -14,7 +14,6 @@ export const UserProvider: React.FC<{ children: React.ReactNode }> = ({ children
   const [username, setUsername] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(true);
 
-  // --- OVO JE VERZIJA KOJA PAMTI KORISNIKA ---
   useEffect(() => {
     const loadSavedUser = async () => {
       try {

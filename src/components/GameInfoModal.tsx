@@ -8,7 +8,6 @@ interface GameInfoModalProps {
   visible: boolean;
   onClose: () => void;
   gameKey: 'tictactoe' | 'memory' | 'mathquiz';
-  // videoUrl je obrisan
 }
 
 export default function GameInfoModal({ visible, onClose, gameKey }: GameInfoModalProps) {
@@ -80,7 +79,7 @@ const styles = StyleSheet.create({
   },
   modalView: {
     width: '100%',
-    maxHeight: '70%', // Malo smanjena visina jer nema videa
+    maxHeight: '70%', 
     borderRadius: 20,
     padding: 20,
     elevation: 5,

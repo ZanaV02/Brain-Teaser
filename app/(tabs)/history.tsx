@@ -119,7 +119,6 @@ export default function HistoryScreen() {
           renderItem={({ item }) => {
             const isActive = activeFilter === item;
             
-            // OVDJE KORISTIMO NOVU FUNKCIJU ZA PREVOD LABELA
             const label = getTranslatedGameName(item);
             
             return (

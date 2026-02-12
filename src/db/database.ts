@@ -122,7 +122,7 @@ export const getScoreHistory = async (filter?: { username?: string, gameKey?: st
   return await db.getAllAsync<ScoreEntry>(query, params);
 };
 
-// --- NOVO: FUNKCIJA ZA BRISANJE ISTORIJE ---
+// --- FUNKCIJA ZA BRISANJE ISTORIJE ---
 export const clearDatabase = async () => {
   try {
     const db = await getDatabase();
