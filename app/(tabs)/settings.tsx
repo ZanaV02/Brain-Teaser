@@ -1,19 +1,19 @@
+import { Ionicons } from '@expo/vector-icons';
 import React from 'react';
-import { 
-  View, 
-  Text, 
-  StyleSheet, 
-  TouchableOpacity, 
-  Switch, 
+import {
+  Alert,
   ScrollView,
-  Alert 
+  StyleSheet,
+  Switch,
+  Text,
+  TouchableOpacity,
+  View
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { Ionicons } from '@expo/vector-icons';
-import { useUser } from '../../src/context/UserContext';
-import { useTheme, ACCENT_COLORS } from '../../src/context/ThemeContext';
-import { clearDatabase } from '../../src/db/database';
 import { useLanguage } from '../../src/context/LanguageContext';
+import { ACCENT_COLORS, useTheme } from '../../src/context/ThemeContext';
+import { useUser } from '../../src/context/UserContext';
+import { clearDatabase } from '../../src/db/database';
 
 export default function SettingsScreen() {
   const { language, toggleLanguage, t } = useLanguage();
@@ -126,7 +126,7 @@ export default function SettingsScreen() {
             value={isDarkMode} 
             onValueChange={toggleTheme}
             trackColor={{ false: "#D1D1D1", true: accentColor }}
-            thumbColor={isDarkMode ? "#fff" : "#f4f3f4"}
+            thumbColor={isDarkMode ? "#ffffff" : "#ffffff"}
           />
         </View>
 

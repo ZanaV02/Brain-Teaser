@@ -1,11 +1,11 @@
-import { useEffect } from 'react';
 import { Stack, useRouter, useSegments } from 'expo-router';
-import { UserProvider, useUser } from '../src/context/UserContext';
-import { ThemeProvider } from '../src/context/ThemeContext';
-import { View, ActivityIndicator } from 'react-native';
+import { useEffect } from 'react';
+import { ActivityIndicator, View } from 'react-native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
-import { initializeDatabase } from '../src/db/database';
 import { LanguageProvider } from '../src/context/LanguageContext';
+import { ThemeProvider } from '../src/context/ThemeContext';
+import { UserProvider, useUser } from '../src/context/UserContext';
+import { initializeDatabase } from '../src/db/database';
 
 const MainLayout = () => {
   const { username, isLoading } = useUser();
@@ -14,8 +14,8 @@ const MainLayout = () => {
 
   useEffect(() => {
     initializeDatabase()
-      .then(() => console.log("✅ Baza je spremna!"))
-      .catch(e => console.error("❌ Greška pri kreiranju baze:", e));
+      .then(() => console.log("Baza je spremna!"))
+      .catch(e => console.error("Greška pri kreiranju baze:", e));
   }, []);
 
   useEffect(() => {

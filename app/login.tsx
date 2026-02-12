@@ -1,18 +1,18 @@
+import { Ionicons, MaterialCommunityIcons } from '@expo/vector-icons';
 import React, { useState } from 'react';
-import { 
-  View, 
-  Text, 
-  StyleSheet, 
-  TextInput, 
-  TouchableOpacity, 
-  KeyboardAvoidingView, 
-  Platform, 
+import {
+  ActivityIndicator,
   Alert,
-  ActivityIndicator
+  KeyboardAvoidingView,
+  Platform,
+  StyleSheet,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  View
 } from 'react-native';
-import { useUser } from '../src/context/UserContext';
-import { Ionicons } from '@expo/vector-icons';
 import { useLanguage } from '../src/context/LanguageContext';
+import { useUser } from '../src/context/UserContext';
 
 export default function LoginScreen() {
   const [inputText, setInputText] = useState('');
@@ -49,7 +49,7 @@ export default function LoginScreen() {
     >
       <View style={styles.card}>
         <View style={styles.iconCircle}>
-          <Ionicons name="rocket-outline" size={45} color="#6200ee" />
+          <MaterialCommunityIcons name="brain" size={45} color="#206571" />
         </View>
 
         <Text style={styles.title}>{t('login_welcome')}</Text>
@@ -58,7 +58,7 @@ export default function LoginScreen() {
         </Text>
 
         <View style={styles.inputWrapper}>
-          <Ionicons name="person-outline" size={20} color="#6200ee" style={styles.inputIcon} />
+          <Ionicons name="person-outline" size={20} color="#206571" style={styles.inputIcon} />
           <TextInput
             style={styles.input}
             placeholder={t('login_placeholder')}
@@ -87,7 +87,7 @@ export default function LoginScreen() {
         </TouchableOpacity>
       </View>
       
-      <Text style={styles.footerText}>ETF BL - PROJEKTNI ZADATAK 2024/2025</Text>
+      <Text style={styles.footerText}>ETF BL</Text>
     </KeyboardAvoidingView>
   );
 }
@@ -95,7 +95,7 @@ export default function LoginScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#6200ee',
+    backgroundColor: '#206571',
     justifyContent: 'center',
     padding: 24,
   },
@@ -154,7 +154,7 @@ const styles = StyleSheet.create({
     fontWeight: '500',
   },
   button: {
-    backgroundColor: '#6200ee',
+    backgroundColor: '#206571',
     width: '100%',
     height: 60,
     borderRadius: 16,

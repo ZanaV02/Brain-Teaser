@@ -1,10 +1,10 @@
-import React, { createContext, useContext, useState, useEffect } from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import React, { createContext, useContext, useEffect, useState } from 'react';
 
 // Definišemo koje boje imamo na raspolaganju
 export const ACCENT_COLORS = {
   purple: '#a934cc',
-  blue: '#0a497d',
+  blue: '#206571',
   orange: '#ca9b55',
 };
 
